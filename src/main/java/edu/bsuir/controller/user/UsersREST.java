@@ -29,6 +29,12 @@ public class UsersRESTController {
                                  MediaType.APPLICATION_XML_VALUE })
     public Users getUsers(@PathVariable("userId") String userId) { return usersService.getUser(Integer.parseInt(userId)); }
 
+    @RequestMapping(value = "/user/{userId}",
+            method = RequestMethod.DELETE,
+            produces = { MediaType.APPLICATION_JSON_VALUE,
+                    MediaType.APPLICATION_XML_VALUE })
+    public void deleteUser(@PathVariable("userId") String userId) { usersService.delete(Integer.parseInt(userId)); }
+
 
     @RequestMapping(value = "/user",
                     method = RequestMethod.POST,
@@ -41,10 +47,4 @@ public class UsersRESTController {
                     produces = { MediaType.APPLICATION_JSON_VALUE,
                                  MediaType.APPLICATION_XML_VALUE })
     public Users editUser(@RequestBody Users user) { return usersService.editUser(user); }
-
-    @RequestMapping(value = "/user/{userId}",
-                    method = RequestMethod.DELETE,
-                    produces = { MediaType.APPLICATION_JSON_VALUE,
-                                 MediaType.APPLICATION_XML_VALUE })
-    public void deleteUser(@PathVariable("userId") String userId) { usersService.delete(Integer.parseInt(userId)); }
 }
