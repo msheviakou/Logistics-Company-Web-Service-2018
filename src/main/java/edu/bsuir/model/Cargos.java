@@ -11,8 +11,6 @@ public class Cargos {
     private int cargoCount;
     private String cargoDocument;
 
-    private Orders order;
-
     @Id
     @Column(name = "id")
     public int getId() {
@@ -61,17 +59,6 @@ public class Cargos {
 
     public void setCargoDocument(String cargoDocument) {
         this.cargoDocument = cargoDocument;
-    }
-
-    /**
-     Related Entities
-     **/
-
-    @OneToOne(optional = true, mappedBy = "cargo")
-    public Orders getOrder() { return order; }
-
-    public void setOrder(Orders order) {
-        this.order = order;
     }
 
     @Override

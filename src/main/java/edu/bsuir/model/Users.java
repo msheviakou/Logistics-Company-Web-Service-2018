@@ -11,8 +11,6 @@ public class Users {
     private String password;
     private String name;
 
-    private Notices notice;
-
     @Id
     @Column(name = "id")
     public int getId() {
@@ -61,19 +59,6 @@ public class Users {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    /**
-     Related Entities
-     **/
-
-    @OneToOne(mappedBy = "forwarder", fetch = FetchType.EAGER)
-    public Notices getNotice() {
-        return notice;
-    }
-
-    public void setNotice(Notices notice) {
-        this.notice = notice;
     }
 
     @Override

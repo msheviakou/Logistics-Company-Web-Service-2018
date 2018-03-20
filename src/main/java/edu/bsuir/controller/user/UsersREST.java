@@ -1,4 +1,4 @@
-package edu.bsuir.controller;
+package edu.bsuir.controller.user;
 
 import edu.bsuir.model.Users;
 import edu.bsuir.service.implementation.UsersServiceImpl;
@@ -30,9 +30,9 @@ public class UsersRESTController {
     public Users getUsers(@PathVariable("userId") String userId) { return usersService.getUser(Integer.parseInt(userId)); }
 
     @RequestMapping(value = "/user/{userId}",
-            method = RequestMethod.DELETE,
-            produces = { MediaType.APPLICATION_JSON_VALUE,
-                    MediaType.APPLICATION_XML_VALUE })
+                    method = RequestMethod.DELETE,
+                    produces = { MediaType.APPLICATION_JSON_VALUE,
+                                 MediaType.APPLICATION_XML_VALUE })
     public void deleteUser(@PathVariable("userId") String userId) { usersService.delete(Integer.parseInt(userId)); }
 
 

@@ -17,7 +17,6 @@ public class Notices {
 
     private Drivers driver;
     private Users forwarder;
-    private List<Orders> orders;
 
     @Id
     @Column(name = "id")
@@ -111,15 +110,6 @@ public class Notices {
 
     public void setDriver(Drivers driver) {
         this.driver = driver;
-    }
-
-    @OneToMany(mappedBy = "notice", fetch = FetchType.EAGER)
-    public List<Orders> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Orders> orders) {
-        this.orders = orders;
     }
 
     @Override

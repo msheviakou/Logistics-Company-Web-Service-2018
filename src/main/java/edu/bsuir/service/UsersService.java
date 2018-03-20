@@ -10,4 +10,6 @@ public interface UsersService {
     Users editUser(Users user);
     Users getUser(int id);
     List<Users> getAll();
+
+    Users getUserByLoginAndPassword(String login, String password);
 }

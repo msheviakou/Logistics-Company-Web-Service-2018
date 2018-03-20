@@ -13,7 +13,6 @@ public class Carriers {
     private String carrierElMail;
 
     private Drivers driver;
-    private List<Orders> orders;
 
     @Id
     @Column(name = "id")
@@ -77,15 +76,6 @@ public class Carriers {
 
     public void setDriver(Drivers driver) {
         this.driver = driver;
-    }
-
-    @OneToMany(mappedBy = "carrier", fetch = FetchType.EAGER)
-    public List<Orders> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Orders> orders) {
-        this.orders = orders;
     }
 
     @Override
