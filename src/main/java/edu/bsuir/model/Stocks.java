@@ -74,15 +74,6 @@ public class Stocks {
         this.stockCountry = stockCountry;
     }
 
-    /**
-     Related Entities
-     **/
-
-    @OneToMany(mappedBy = "stock", fetch = FetchType.EAGER)
-    public Unloadings getUnloading() { return unloading; }
-
-    public void setUnloading(Unloadings unloading) { this.unloading = unloading; }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

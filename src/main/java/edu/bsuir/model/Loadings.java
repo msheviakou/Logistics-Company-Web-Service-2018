@@ -16,8 +16,6 @@ public class Loadings {
     private Date loadingDate;
     private Time loadingTime;
 
-    private Orders order;
-
     @Id
     @Column(name = "id")
     public int getId() {
@@ -96,19 +94,6 @@ public class Loadings {
 
     public void setLoadingTime(Time loadingTime) {
         this.loadingTime = loadingTime;
-    }
-
-    /**
-     Related Entities
-     **/
-
-    @OneToOne(optional = true, mappedBy = "loading")
-    public Orders getOrder() {
-        return order;
-    }
-
-    public void setOrder(Orders order) {
-        this.order = order;
     }
 
     @Override

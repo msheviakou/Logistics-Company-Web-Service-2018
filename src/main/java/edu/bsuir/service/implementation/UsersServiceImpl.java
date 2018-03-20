@@ -37,4 +37,7 @@ public class UsersServiceImpl implements UsersService{
     public List<Users> getAll() {
         return usersRepository.findAll();
     }
+
+    @Override
+    public Users getUserByLoginAndPassword(String login, String password) { return usersRepository.getUserByLoginAndPassword(login, password); }
 }

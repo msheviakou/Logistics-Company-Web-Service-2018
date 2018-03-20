@@ -91,11 +91,6 @@ public class Unloadings {
         this.stock = stock;
     }
 
-    @OneToOne(optional = true, mappedBy = "unloading")
-    public Orders getOrder() { return order; }
-
-    public void setOrder(Orders order) { this.order = order; }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
