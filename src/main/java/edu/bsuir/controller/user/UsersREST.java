@@ -22,7 +22,6 @@ public class UsersREST {
         return usersService.getAll();
     }
 
-
     @RequestMapping(value = "/user/{userId}",
                     method = RequestMethod.GET,
                     produces = { MediaType.APPLICATION_JSON_VALUE,
@@ -34,7 +33,6 @@ public class UsersREST {
                     produces = { MediaType.APPLICATION_JSON_VALUE,
                                  MediaType.APPLICATION_XML_VALUE })
     public void deleteUser(@PathVariable("userId") String userId) { usersService.delete(Integer.parseInt(userId)); }
-
 
     @RequestMapping(value = "/user",
                     method = RequestMethod.POST,
