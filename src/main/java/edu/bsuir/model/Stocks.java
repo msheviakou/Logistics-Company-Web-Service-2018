@@ -12,8 +12,6 @@ public class Stocks {
     private String stockCity;
     private String stockCountry;
 
-    private Unloadings unloading;
-
     @Id
     @Column(name = "id")
     public int getId() {

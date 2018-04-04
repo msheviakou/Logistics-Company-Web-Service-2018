@@ -15,7 +15,6 @@ public class Unloadings {
     private Time unloadingTime;
 
     private Stocks stock;
-    private Orders order;
 
     @Id
     @Column(name = "id")
