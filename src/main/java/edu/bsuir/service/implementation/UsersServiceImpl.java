@@ -40,4 +40,7 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public Users getUserByLoginAndPassword(String login, String password) { return usersRepository.getUserByLoginAndPassword(login, password); }
+
+    @Override
+    public Users getUserByName(String name) { return usersRepository.getUserByName(name); }
 }
