@@ -1,5 +1,7 @@
 package edu.bsuir.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,6 +11,10 @@ public class Drivers {
     private String phoneNumber;
     private String name;
     private String trukRegNumber;
+
+    @OneToMany(mappedBy = "driver", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Carriers carrier;
 
     @Id
     @Column(name = "id")

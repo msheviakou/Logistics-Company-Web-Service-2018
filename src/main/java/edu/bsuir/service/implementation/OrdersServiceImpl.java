@@ -13,38 +13,38 @@ public class OrdersServiceImpl implements OrdersService{
     private OrdersRepository ordersRepository;
 
     @Autowired
-    private CarriersRepository carriersRepository;
+    private CarriersServiceImpl carriersService;
 
     @Autowired
-    private CargosRepository cargosRepository;
+    private CargosServiceImpl cargosService;
 
     @Autowired
-    private LoadingsRepository loadingsRepository;
+    private LoadingsServiceImpl loadingsService;
 
     @Autowired
-    private UnloadingsRepository unloadingsRepository;
+    private UnloadingsServiceImpl unloadingsService;
 
     @Autowired
-    private UsersRepository usersRepository;
+    private UsersServiceImpl usersService;
 
     @Override
     public Orders addOrder(Orders order) {
-        Carriers carriers = carriersRepository.save(order.getCarrier());
+        Carriers carriers = carriersService.addCarrier(order.getCarrier());
         order.setCarrier(carriers);
 
-        Cargos cargos = cargosRepository.save(order.getCargo());
+        Cargos cargos = cargosService.addCargo(order.getCargo());
         order.setCargo(cargos);
 
-        Loadings loadings = loadingsRepository.save(order.getLoading());
+        Loadings loadings = loadingsService.addLoading(order.getLoading());
         order.setLoading(loadings);
 
-        Unloadings unloadings = unloadingsRepository.save(order.getUnloading());
+        Unloadings unloadings = unloadingsService.addUnloading(order.getUnloading());
         order.setUnloading(unloadings);
 
-        Users userForwarderBY = usersRepository.save(order.getUserForwarderBY());
+        Users userForwarderBY = usersService.getUserByName(order.getUserForwarderBY().getName());
         order.setUserForwarderBY(userForwarderBY);
 
-        Users userForwarderPL = usersRepository.getUserByName(order.getUserForwarderPL().getName());
+        Users userForwarderPL = usersService.getUserByName(order.getUserForwarderPL().getName());
         order.setUserForwarderBY(userForwarderPL);
 
         return ordersRepository.saveAndFlush(order); }

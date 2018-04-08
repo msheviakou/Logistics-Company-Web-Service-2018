@@ -15,11 +15,11 @@ public class CarriersServiceImpl implements CarriersService {
     private CarriersRepository carriersRepository;
 
     @Autowired
-    private DriversRepository driversRepository;
+    private DriversServiceImpl driversService;
 
     @Override
     public Carriers addCarrier(Carriers carrier) {
-        Drivers drivers = driversRepository.save(carrier.getDriver());
+        Drivers drivers = driversService.addDriver(carrier.getDriver());
         carrier.setDriver(drivers);
 
         return carriersRepository.saveAndFlush(carrier);

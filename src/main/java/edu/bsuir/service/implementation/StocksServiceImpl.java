@@ -4,7 +4,9 @@ import edu.bsuir.model.Stocks;
 import edu.bsuir.repository.StocksRepository;
 import edu.bsuir.service.StocksService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class StocksServiceImpl implements StocksService{
 
     @Autowired

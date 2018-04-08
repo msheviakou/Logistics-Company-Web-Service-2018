@@ -1,5 +1,7 @@
 package edu.bsuir.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -96,8 +98,9 @@ public class Orders {
      Related Entities
      **/
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "carrierID")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "carrierID", referencedColumnName = "id")
+    @JsonBackReference
     public Carriers getCarrier() {
         return carrier;
     }
@@ -106,8 +109,8 @@ public class Orders {
         this.carrier = carrier;
     }
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "cargoID")
+    @OneToOne()
+    @JoinColumn(name = "cargoID", referencedColumnName = "id")
     public Cargos getCargo() {
         return cargo;
     }
@@ -116,8 +119,8 @@ public class Orders {
         this.cargo = cargo;
     }
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "loadingID")
+    @OneToOne()
+    @JoinColumn(name = "loadingID", referencedColumnName = "id")
     public Loadings getLoading() {
         return loading;
     }
@@ -126,8 +129,8 @@ public class Orders {
         this.loading = loading;
     }
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "unloadingID")
+    @OneToOne()
+    @JoinColumn(name = "unloadingID", referencedColumnName = "id")
     public Unloadings getUnloading() {
         return unloading;
     }
@@ -136,8 +139,8 @@ public class Orders {
         this.unloading = unloading;
     }
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "noticeID")
+    @ManyToOne
+    @JoinColumn(name = "noticeID", referencedColumnName = "id")
     public Notices getNotice() {
         return notice;
     }
@@ -146,8 +149,8 @@ public class Orders {
         this.notice = notice;
     }
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "orderBYforwarderID")
+    @ManyToOne
+    @JoinColumn(name = "orderBYforwarderID", referencedColumnName = "id")
     public Users getUserForwarderBY() {
         return userForwarderBY;
     }
@@ -156,8 +159,8 @@ public class Orders {
         this.userForwarderBY = userForwarderBY;
     }
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "orderPLforwarderID")
+    @ManyToOne
+    @JoinColumn(name = "orderPLforwarderID", referencedColumnName = "id")
     public Users getUserForwarderPL() {
         return userForwarderPL;
     }
