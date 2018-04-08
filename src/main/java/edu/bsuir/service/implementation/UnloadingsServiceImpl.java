@@ -2,7 +2,6 @@ package edu.bsuir.service.implementation;
 
 import edu.bsuir.model.Stocks;
 import edu.bsuir.model.Unloadings;
-import edu.bsuir.repository.StocksRepository;
 import edu.bsuir.repository.UnloadingsRepository;
 import edu.bsuir.service.UnloadingsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +14,11 @@ public class UnloadingsServiceImpl implements UnloadingsService {
     private UnloadingsRepository unloadingsRepository;
 
     @Autowired
-    private StocksRepository stocksRepository;
+    private StocksServiceImpl stocksService;
 
     @Override
     public Unloadings addUnloading(Unloadings unloading) {
-        Stocks stocks = stocksRepository.save(unloading.getStock());
+        Stocks stocks = stocksService.addStock(unloading.getStock());
         unloading.setStock(stocks);
 
         return unloadingsRepository.saveAndFlush(unloading);

@@ -92,8 +92,8 @@ public class Notices {
      Related Entities
      **/
 
-    @OneToOne(optional = true, cascade = CascadeType.ALL)
-    @JoinColumn(name = "forwarderID")
+    @OneToOne()
+    @JoinColumn(name = "forwarderID", referencedColumnName = "id")
     public Users getForwarder() {
         return forwarder;
     }
@@ -102,8 +102,8 @@ public class Notices {
         this.forwarder = forwarder;
     }
 
-    @OneToOne(optional = true, cascade = CascadeType.ALL)
-    @JoinColumn(name = "driverID")
+    @OneToOne()
+    @JoinColumn(name = "driverID", referencedColumnName = "id")
     public Drivers getDriver() {
         return driver;
     }

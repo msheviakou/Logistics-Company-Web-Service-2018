@@ -1,5 +1,8 @@
 package edu.bsuir.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,6 +16,10 @@ public class Carriers {
     private String carrierElMail;
 
     private Drivers driver;
+
+    @OneToMany(mappedBy = "carrier", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Orders> orders;
 
     @Id
     @Column(name = "id")
@@ -68,8 +75,9 @@ public class Carriers {
      Related Entities
      **/
 
-    @OneToOne(optional = true, cascade = CascadeType.ALL)
-    @JoinColumn(name = "driverID")
+    @OneToOne()
+    @JoinColumn(name = "driverID", referencedColumnName = "id")
+    @JsonBackReference
     public Drivers getDriver() {
         return driver;
     }

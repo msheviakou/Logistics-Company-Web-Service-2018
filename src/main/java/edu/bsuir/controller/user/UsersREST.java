@@ -26,7 +26,7 @@ public class UsersREST {
                     method = RequestMethod.GET,
                     produces = { MediaType.APPLICATION_JSON_VALUE,
                                  MediaType.APPLICATION_XML_VALUE })
-    public Users getUsers(@PathVariable("userId") String userId) { return usersService.getUser(Integer.parseInt(userId)); }
+    public Users getUser(@PathVariable("userId") String userId) { return usersService.getUser(Integer.parseInt(userId)); }
 
     @RequestMapping(value = "/user/{userId}",
                     method = RequestMethod.DELETE,

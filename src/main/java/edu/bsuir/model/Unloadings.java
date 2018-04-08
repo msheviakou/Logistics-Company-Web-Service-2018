@@ -80,8 +80,8 @@ public class Unloadings {
      Related Entities
      **/
 
-    @OneToOne(optional = true, cascade = CascadeType.ALL)
-    @JoinColumn(name = "unloadingStockID")
+    @OneToOne()
+    @JoinColumn(name = "unloadingStockID", referencedColumnName = "id")
     public Stocks getStock() {
         return stock;
     }
