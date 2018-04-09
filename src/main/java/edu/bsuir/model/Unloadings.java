@@ -1,12 +1,13 @@
 package edu.bsuir.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 
 @Entity
 @Table(name = "unloadings", schema = "logisticcompanyservice")
-public class Unloadings {
+public class Unloadings implements Serializable{
     private int id;
     private String unloadingClient;
     private String unloadingCity;
@@ -15,6 +16,18 @@ public class Unloadings {
     private Time unloadingTime;
 
     private Stocks stock;
+
+    public Unloadings(){}
+
+    public Unloadings(int id, String unloadingClient, String unloadingCity, String unloadingCountry, Date unloadingDate, Time unloadingTime, Stocks stock) {
+        this.id = id;
+        this.unloadingClient = unloadingClient;
+        this.unloadingCity = unloadingCity;
+        this.unloadingCountry = unloadingCountry;
+        this.unloadingDate = unloadingDate;
+        this.unloadingTime = unloadingTime;
+        this.stock = stock;
+    }
 
     @Id
     @Column(name = "id")

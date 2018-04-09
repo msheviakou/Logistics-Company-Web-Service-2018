@@ -1,15 +1,26 @@
 package edu.bsuir.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "users", schema = "logisticcompanyservice")
-public class Users {
+public class Users implements Serializable{
     private int id;
     private String post;
     private String login;
     private String password;
     private String name;
+
+    public Users() {}
+
+    public Users(int id, String post, String login, String password, String name) {
+        this.id = id;
+        this.post = post;
+        this.login = login;
+        this.password = password;
+        this.name = name;
+    }
 
     @Id
     @Column(name = "id")

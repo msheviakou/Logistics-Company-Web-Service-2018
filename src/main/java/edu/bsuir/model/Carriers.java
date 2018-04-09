@@ -4,11 +4,12 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "carriers", schema = "logisticcompanyservice")
-public class Carriers {
+public class Carriers implements Serializable{
     private int id;
     private String carrierCompanyName;
     private String carrierContact;
@@ -17,9 +18,16 @@ public class Carriers {
 
     private Drivers driver;
 
-    @OneToMany(mappedBy = "carrier", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<Orders> orders;
+    public Carriers() {}
+
+    public Carriers(int id, String carrierCompanyName, String carrierContact, String carrierTelephone, String carrierElMail, Drivers driver) {
+        this.id = id;
+        this.carrierCompanyName = carrierCompanyName;
+        this.carrierContact = carrierContact;
+        this.carrierTelephone = carrierTelephone;
+        this.carrierElMail = carrierElMail;
+        this.driver = driver;
+    }
 
     @Id
     @Column(name = "id")
@@ -77,7 +85,6 @@ public class Carriers {
 
     @OneToOne()
     @JoinColumn(name = "driverID", referencedColumnName = "id")
-    @JsonBackReference
     public Drivers getDriver() {
         return driver;
     }
