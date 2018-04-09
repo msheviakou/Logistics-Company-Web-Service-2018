@@ -3,11 +3,12 @@ package edu.bsuir.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
 @Table(name = "orders", schema = "logisticcompanyservice")
-public class Orders {
+public class Orders implements Serializable{
     private int id;
     private Date dateOfOrder;
     private String numberOfOrder;
@@ -23,6 +24,25 @@ public class Orders {
     private Notices notice;
     private Users userForwarderBY;
     private Users userForwarderPL;
+
+    public Orders() {}
+
+    public Orders(int id, Date dateOfOrder, String numberOfOrder, String orderStatus, Double freightCost, String paymentPeriod, String additionalInformation, Carriers carrier, Cargos cargo, Loadings loading, Unloadings unloading, Notices notice, Users userForwarderBY, Users userForwarderPL) {
+        this.id = id;
+        this.dateOfOrder = dateOfOrder;
+        this.numberOfOrder = numberOfOrder;
+        this.orderStatus = orderStatus;
+        this.freightCost = freightCost;
+        this.paymentPeriod = paymentPeriod;
+        this.additionalInformation = additionalInformation;
+        this.carrier = carrier;
+        this.cargo = cargo;
+        this.loading = loading;
+        this.unloading = unloading;
+        this.notice = notice;
+        this.userForwarderBY = userForwarderBY;
+        this.userForwarderPL = userForwarderPL;
+    }
 
     @Id
     @Column(name = "id")
@@ -100,7 +120,6 @@ public class Orders {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "carrierID", referencedColumnName = "id")
-    @JsonBackReference
     public Carriers getCarrier() {
         return carrier;
     }

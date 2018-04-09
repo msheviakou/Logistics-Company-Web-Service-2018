@@ -1,15 +1,26 @@
 package edu.bsuir.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "cargos", schema = "logisticcompanyservice")
-public class Cargos {
+public class Cargos implements Serializable{
     private int id;
     private String cargoDescription;
     private int cargoWeight;
     private int cargoCount;
     private String cargoDocument;
+
+    public Cargos(){}
+
+    public Cargos(int id, String cargoDescription, int cargoWeight, int cargoCount, String cargoDocument) {
+        this.id = id;
+        this.cargoDescription = cargoDescription;
+        this.cargoWeight = cargoWeight;
+        this.cargoCount = cargoCount;
+        this.cargoDocument = cargoDocument;
+    }
 
     @Id
     @Column(name = "id")

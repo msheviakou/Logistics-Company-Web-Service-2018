@@ -3,18 +3,24 @@ package edu.bsuir.model;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "drivers", schema = "logisticcompanyservice")
-public class Drivers {
+public class Drivers implements Serializable{
     private int id;
     private String phoneNumber;
     private String name;
     private String trukRegNumber;
 
-    @OneToMany(mappedBy = "driver", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Carriers carrier;
+    public Drivers() {}
+
+    public Drivers(int id, String phoneNumber, String name, String trukRegNumber) {
+        this.id = id;
+        this.phoneNumber = phoneNumber;
+        this.name = name;
+        this.trukRegNumber = trukRegNumber;
+    }
 
     @Id
     @Column(name = "id")
