@@ -1,8 +1,11 @@
 package edu.bsuir.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "users", schema = "logisticcompanyservice")
 public class Users implements Serializable{
