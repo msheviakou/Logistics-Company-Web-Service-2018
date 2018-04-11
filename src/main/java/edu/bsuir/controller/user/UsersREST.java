@@ -39,10 +39,4 @@ public class UsersREST {
                     produces = { MediaType.APPLICATION_JSON_VALUE,
                                  MediaType.APPLICATION_XML_VALUE })
     public Users addUser(@RequestBody Users user) { return usersService.addUser(user); }
-
-    @RequestMapping(value = "/user",
-                    method = RequestMethod.PUT,
-                    produces = { MediaType.APPLICATION_JSON_VALUE,
-                                 MediaType.APPLICATION_XML_VALUE })
-    public Users editUser(@RequestBody Users user) { return usersService.editUser(user); }
 }
