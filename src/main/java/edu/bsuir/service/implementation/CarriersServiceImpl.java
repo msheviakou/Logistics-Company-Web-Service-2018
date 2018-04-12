@@ -14,13 +14,13 @@ public class CarriersServiceImpl implements CarriersService {
     @Autowired
     private CarriersRepository carriersRepository;
 
-    @Autowired
-    private DriversServiceImpl driversService;
+    /*@Autowired
+    private DriversServiceImpl driversService;*/
 
     @Override
     public Carriers addCarrier(Carriers carrier) {
-        Drivers drivers = driversService.addDriver(carrier.getDriver());
-        carrier.setDriver(drivers);
+        /*Drivers drivers = driversService.addDriver(carrier.getDriver());
+        carrier.setDriver(drivers);*/
 
         return carriersRepository.saveAndFlush(carrier);
     }

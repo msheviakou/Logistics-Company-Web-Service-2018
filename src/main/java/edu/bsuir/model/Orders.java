@@ -118,18 +118,14 @@ public class Orders implements Serializable{
      Related Entities
      **/
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "carrierID", referencedColumnName = "id")
-    public Carriers getCarrier() {
-        return carrier;
-    }
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "carrier_id", referencedColumnName = "id", nullable = false)
+    public Carriers getCarrier() { return carrier; }
 
-    public void setCarrier(Carriers carrier) {
-        this.carrier = carrier;
-    }
+    public void setCarrier(Carriers carrier) { this.carrier = carrier; }
 
-    @OneToOne()
-    @JoinColumn(name = "cargoID", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cargo_id", referencedColumnName = "id", nullable = false)
     public Cargos getCargo() {
         return cargo;
     }
@@ -138,8 +134,8 @@ public class Orders implements Serializable{
         this.cargo = cargo;
     }
 
-    @OneToOne()
-    @JoinColumn(name = "loadingID", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "loading_id", referencedColumnName = "id", nullable = false)
     public Loadings getLoading() {
         return loading;
     }
@@ -148,8 +144,8 @@ public class Orders implements Serializable{
         this.loading = loading;
     }
 
-    @OneToOne()
-    @JoinColumn(name = "unloadingID", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "unloading_id", referencedColumnName = "id", nullable = false)
     public Unloadings getUnloading() {
         return unloading;
     }
@@ -158,8 +154,8 @@ public class Orders implements Serializable{
         this.unloading = unloading;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "noticeID", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "notice_id", referencedColumnName = "id")
     public Notices getNotice() {
         return notice;
     }
@@ -168,8 +164,8 @@ public class Orders implements Serializable{
         this.notice = notice;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "orderBYforwarderID", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_by_forwarder_id", referencedColumnName = "id", nullable = false)
     public Users getUserForwarderBY() {
         return userForwarderBY;
     }
@@ -178,8 +174,8 @@ public class Orders implements Serializable{
         this.userForwarderBY = userForwarderBY;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "orderPLforwarderID", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_pl_forwarder_id", referencedColumnName = "id", nullable = false)
     public Users getUserForwarderPL() {
         return userForwarderPL;
     }

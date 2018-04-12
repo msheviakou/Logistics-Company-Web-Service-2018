@@ -12,7 +12,7 @@ public class OrdersServiceImpl implements OrdersService{
     @Autowired
     private OrdersRepository ordersRepository;
 
-    @Autowired
+    /*@Autowired
     private CarriersServiceImpl carriersService;
 
     @Autowired
@@ -25,11 +25,11 @@ public class OrdersServiceImpl implements OrdersService{
     private UnloadingsServiceImpl unloadingsService;
 
     @Autowired
-    private UsersServiceImpl usersService;
+    private UsersServiceImpl usersService;*/
 
     @Override
     public Orders addOrder(Orders order) {
-        Carriers carriers = carriersService.addCarrier(order.getCarrier());
+        /*Carriers carriers = carriersService.addCarrier(order.getCarrier());
         order.setCarrier(carriers);
 
         Cargos cargos = cargosService.addCargo(order.getCargo());
@@ -45,7 +45,7 @@ public class OrdersServiceImpl implements OrdersService{
         order.setUserForwarderBY(userForwarderBY);
 
         Users userForwarderPL = usersService.getUserByName(order.getUserForwarderPL().getName());
-        order.setUserForwarderBY(userForwarderPL);
+        order.setUserForwarderBY(userForwarderPL);*/
 
         return ordersRepository.saveAndFlush(order); }
 }
