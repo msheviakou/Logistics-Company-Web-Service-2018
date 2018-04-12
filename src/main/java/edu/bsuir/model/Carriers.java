@@ -83,8 +83,8 @@ public class Carriers implements Serializable{
      Related Entities
      **/
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "driver_id", referencedColumnName = "id", nullable = false)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "driver_id", nullable = false)
     public Drivers getDriver() {
         return driver;
     }

@@ -26,7 +26,7 @@ public class Users implements Serializable{
     }
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", unique = true, nullable = false)
     public int getId() {
         return id;
     }
