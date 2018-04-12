@@ -22,10 +22,10 @@ public class OrdersServiceImpl implements OrdersService{
     private LoadingsServiceImpl loadingsService;
 
     @Autowired
-    private UnloadingsServiceImpl unloadingsService;
+    private UnloadingsServiceImpl unloadingsService;*/
 
     @Autowired
-    private UsersServiceImpl usersService;*/
+    private UsersServiceImpl usersService;
 
     @Override
     public Orders addOrder(Orders order) {
@@ -39,13 +39,14 @@ public class OrdersServiceImpl implements OrdersService{
         order.setLoading(loadings);
 
         Unloadings unloadings = unloadingsService.addUnloading(order.getUnloading());
-        order.setUnloading(unloadings);
+        order.setUnloading(unloadings);*/
 
         Users userForwarderBY = usersService.getUserByName(order.getUserForwarderBY().getName());
         order.setUserForwarderBY(userForwarderBY);
 
         Users userForwarderPL = usersService.getUserByName(order.getUserForwarderPL().getName());
-        order.setUserForwarderBY(userForwarderPL);*/
+        order.setUserForwarderBY(userForwarderPL);
 
-        return ordersRepository.saveAndFlush(order); }
+        return ordersRepository.saveAndFlush(order);
+    }
 }

@@ -108,7 +108,7 @@ public class Notices implements Serializable{
      **/
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "forwarder_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "forwarder_id", nullable = false)
     public Users getForwarder() {
         return forwarder;
     }
@@ -118,7 +118,7 @@ public class Notices implements Serializable{
     }
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "driver_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "driver_id", nullable = false)
     public Drivers getDriver() {
         return driver;
     }
