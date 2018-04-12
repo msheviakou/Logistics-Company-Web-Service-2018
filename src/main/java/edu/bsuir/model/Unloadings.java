@@ -93,8 +93,8 @@ public class Unloadings implements Serializable{
      Related Entities
      **/
 
-    @OneToOne()
-    @JoinColumn(name = "unloadingStockID", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "unloading_stock_id", referencedColumnName = "id", nullable = false)
     public Stocks getStock() {
         return stock;
     }
