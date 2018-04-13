@@ -174,7 +174,7 @@ public class Orders implements Serializable{
         this.userForwarderBY = userForwarderBY;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "order_pl_forwarder_id", nullable = false)
     public Users getUserForwarderPL() {
         return userForwarderPL;

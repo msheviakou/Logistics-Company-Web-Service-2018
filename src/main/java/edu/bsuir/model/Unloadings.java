@@ -1,5 +1,7 @@
 package edu.bsuir.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
@@ -31,6 +33,8 @@ public class Unloadings implements Serializable{
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name= "increment", strategy= "increment")
     public int getId() {
         return id;
     }
