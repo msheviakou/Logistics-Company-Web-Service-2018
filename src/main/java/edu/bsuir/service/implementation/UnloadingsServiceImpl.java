@@ -13,14 +13,6 @@ public class UnloadingsServiceImpl implements UnloadingsService {
     @Autowired
     private UnloadingsRepository unloadingsRepository;
 
-    /*@Autowired
-    private StocksServiceImpl stocksService;*/
-
     @Override
-    public Unloadings addUnloading(Unloadings unloading) {
-        /*Stocks stocks = stocksService.addStock(unloading.getStock());
-        unloading.setStock(stocks);*/
-
-        return unloadingsRepository.saveAndFlush(unloading);
-    }
+    public Unloadings addUnloading(Unloadings unloading) { return unloadingsRepository.saveAndFlush(unloading); }
 }
