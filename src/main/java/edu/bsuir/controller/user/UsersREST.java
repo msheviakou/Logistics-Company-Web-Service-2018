@@ -14,6 +14,12 @@ public class UsersREST {
     @Autowired
     private UsersServiceImpl usersService;
 
+    @RequestMapping(value = "/user",
+            method = RequestMethod.POST,
+            produces = { MediaType.APPLICATION_JSON_VALUE,
+                    MediaType.APPLICATION_XML_VALUE })
+    public Users addUser(@RequestBody Users user) { return usersService.addUser(user); }
+
     @RequestMapping(value = "/users",
                     method = RequestMethod.GET,
                     produces = { MediaType.APPLICATION_JSON_VALUE,
@@ -32,11 +38,5 @@ public class UsersREST {
                     method = RequestMethod.DELETE,
                     produces = { MediaType.APPLICATION_JSON_VALUE,
                                  MediaType.APPLICATION_XML_VALUE })
-    public void deleteUser(@PathVariable("userId") String userId) { usersService.delete(Integer.parseInt(userId)); }
-
-    @RequestMapping(value = "/user",
-                    method = RequestMethod.POST,
-                    produces = { MediaType.APPLICATION_JSON_VALUE,
-                                 MediaType.APPLICATION_XML_VALUE })
-    public Users addUser(@RequestBody Users user) { return usersService.addUser(user); }
+    public void deleteUser(@PathVariable("userId") String userId) { usersService.deleteUser(Integer.parseInt(userId)); }
 }
