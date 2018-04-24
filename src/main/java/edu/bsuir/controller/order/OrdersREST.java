@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class OrdersREST {
 
@@ -16,8 +18,14 @@ public class OrdersREST {
     private OrdersServiceImpl ordersService;
 
     @RequestMapping(value = "/order",
-            method = RequestMethod.POST,
-            produces = { MediaType.APPLICATION_JSON_VALUE,
-                         MediaType.APPLICATION_XML_VALUE })
+                    method = RequestMethod.POST,
+                    produces = { MediaType.APPLICATION_JSON_VALUE,
+                                 MediaType.APPLICATION_XML_VALUE })
     public Orders addOrder(@RequestBody Orders order) { return ordersService.addOrder(order); }
+
+    @RequestMapping(value = "/orders",
+                    method = RequestMethod.GET,
+                    produces = { MediaType.APPLICATION_JSON_VALUE,
+                                 MediaType.APPLICATION_XML_VALUE })
+    public List<Orders> getOrders() { return ordersService.getOrders(); }
 }
