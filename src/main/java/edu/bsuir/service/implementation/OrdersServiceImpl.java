@@ -6,6 +6,8 @@ import edu.bsuir.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OrdersServiceImpl implements OrdersService{
 
@@ -26,4 +28,7 @@ public class OrdersServiceImpl implements OrdersService{
 
         return ordersRepository.saveAndFlush(order);
     }
+
+    @Override
+    public List<Orders> getOrders() { return ordersRepository.findAll(); }
 }
