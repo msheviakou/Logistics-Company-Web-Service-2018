@@ -7,9 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class OrdersServiceImpl implements OrdersService{
+public class OrdersServiceImpl implements OrdersService {
 
     @Autowired
     private OrdersRepository ordersRepository;
@@ -30,7 +31,9 @@ public class OrdersServiceImpl implements OrdersService{
     }
 
     @Override
-    public List<Orders> getOrders() { return ordersRepository.findAll(); }
+    public List<Orders> getOrders() {
+        return ordersRepository.findAll();
+    }
 
     @Override
     public Orders getOrder(int id) {
@@ -44,6 +47,11 @@ public class OrdersServiceImpl implements OrdersService{
 
     @Override
     public Orders getLastOrder() {
-        return ordersRepository.findFirstByOrderByIdDesc();
+        Optional<Orders> isOrder = ordersRepository.findFirstByOrderByIdDesc();
+        if (isOrder.isPresent())
+            return isOrder.get();
+        Orders order = new Orders();
+        order.setNumberOfOrder("000000");
+        return order;
     }
 }
