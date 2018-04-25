@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface NoticesService {
     Notices addNotices(Notices notice);
-    List<Notices> getAll();
+    List<Notices> getNotices();
     Notices getNotice(int id);
     void deleteNotice(int id);
 

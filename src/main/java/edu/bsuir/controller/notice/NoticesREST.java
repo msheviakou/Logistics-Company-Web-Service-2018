@@ -25,7 +25,7 @@ public class NoticesREST {
             produces = { MediaType.APPLICATION_JSON_VALUE,
                     MediaType.APPLICATION_XML_VALUE })
     public List<Notices> getAllNotices() {
-        return noticesService.getAll();
+        return noticesService.getNotices();
     }
 
     @RequestMapping(value = "/notice/{noticeId}",

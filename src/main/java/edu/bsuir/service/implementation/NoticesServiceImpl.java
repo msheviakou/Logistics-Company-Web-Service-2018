@@ -28,7 +28,7 @@ public class NoticesServiceImpl implements NoticesService{
     }
 
     @Override
-    public List<Notices> getAll() {
+    public List<Notices> getNotices() {
         return noticesRepository.findAll();
     }
 
