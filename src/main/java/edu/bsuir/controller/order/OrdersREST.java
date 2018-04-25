@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import java.util.List;
-
 @RestController
 public class OrdersREST {
 
@@ -42,5 +40,13 @@ public class OrdersREST {
                     MediaType.APPLICATION_XML_VALUE })
     public void deleteOrder(@PathVariable("orderId") String orderId) {
         ordersService.deleteOrder(Integer.parseInt(orderId));
+    }
+
+    @RequestMapping(value = "/order/last",
+            method = RequestMethod.GET,
+            produces = { MediaType.APPLICATION_JSON_VALUE,
+                    MediaType.APPLICATION_XML_VALUE })
+    public Orders getLastOrder() {
+        return ordersService.getLastOrder();
     }
 }

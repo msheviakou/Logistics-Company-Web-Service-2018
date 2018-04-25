@@ -9,4 +9,5 @@ public interface OrdersService {
     List<Orders> getOrders();
     Orders getOrder(int id);
     void deleteOrder(int id);
+    Orders getLastOrder();
 }
