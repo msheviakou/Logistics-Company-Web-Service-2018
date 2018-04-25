@@ -24,11 +24,21 @@ public class OrdersServiceImpl implements OrdersService{
         order.setUserForwarderBY(userForwarderBY);
 
         Users userForwarderPL = usersService.getUserByName(order.getUserForwarderPL().getName());
-        order.setUserForwarderBY(userForwarderPL);
+        order.setUserForwarderPL(userForwarderPL);
 
         return ordersRepository.saveAndFlush(order);
     }
 
     @Override
     public List<Orders> getOrders() { return ordersRepository.findAll(); }
+
+    @Override
+    public Orders getOrder(int id) {
+        return ordersRepository.getOne(id);
+    }
+
+    @Override
+    public void deleteOrder(int id) {
+        ordersRepository.deleteById(id);
+    }
 }

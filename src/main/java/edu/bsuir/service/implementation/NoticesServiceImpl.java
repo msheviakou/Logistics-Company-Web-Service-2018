@@ -7,6 +7,8 @@ import edu.bsuir.service.NoticesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class NoticesServiceImpl implements NoticesService{
 
@@ -23,5 +25,20 @@ public class NoticesServiceImpl implements NoticesService{
         notice.setForwarder(userForwarder);
 
         return noticesRepository.saveAndFlush(notice);
+    }
+
+    @Override
+    public List<Notices> getNotices() {
+        return noticesRepository.findAll();
+    }
+
+    @Override
+    public Notices getNotice(int id) {
+        return noticesRepository.getOne(id);
+    }
+
+    @Override
+    public void deleteNotice(int id) {
+        noticesRepository.deleteById(id);
     }
 }

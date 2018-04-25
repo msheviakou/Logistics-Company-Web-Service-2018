@@ -4,10 +4,9 @@ import edu.bsuir.model.Orders;
 import edu.bsuir.service.implementation.OrdersServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 import java.util.List;
 
@@ -28,4 +27,20 @@ public class OrdersREST {
                     produces = { MediaType.APPLICATION_JSON_VALUE,
                                  MediaType.APPLICATION_XML_VALUE })
     public List<Orders> getOrders() { return ordersService.getOrders(); }
+
+    @RequestMapping(value = "/order/{orderId}",
+            method = RequestMethod.GET,
+            produces = { MediaType.APPLICATION_JSON_VALUE,
+                    MediaType.APPLICATION_XML_VALUE })
+    public Orders getOrder(@PathVariable("orderId") String orderId) {
+        return ordersService.getOrder(Integer.parseInt(orderId));
+    }
+
+    @RequestMapping(value = "/order/{orderId}",
+            method = RequestMethod.DELETE,
+            produces = { MediaType.APPLICATION_JSON_VALUE,
+                    MediaType.APPLICATION_XML_VALUE })
+    public void deleteOrder(@PathVariable("orderId") String orderId) {
+        ordersService.deleteOrder(Integer.parseInt(orderId));
+    }
 }
