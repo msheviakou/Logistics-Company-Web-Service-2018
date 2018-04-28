@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsersServiceImpl implements UsersService {
@@ -24,11 +25,6 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public Users editUser(Users user) {
-        return usersRepository.saveAndFlush(user);
-    }
-
-    @Override
     public Users getUser(int id) {
         return usersRepository.getOne(id);
     }
@@ -42,5 +38,10 @@ public class UsersServiceImpl implements UsersService {
     public Users getUserByLoginAndPassword(String login, String password) { return usersRepository.getUserByLoginAndPassword(login, password); }
 
     @Override
-    public Users getUserByName(String name) { return usersRepository.getUserByName(name); }
+    public Users getUserByLogin(String login) {
+        Optional<Users> isUser = usersRepository.getUserByLogin(login);
+        if (isUser.isPresent())
+            return isUser.get();
+        return new Users();
+    }
 }

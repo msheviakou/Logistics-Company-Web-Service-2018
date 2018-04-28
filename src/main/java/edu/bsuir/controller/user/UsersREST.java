@@ -39,4 +39,12 @@ public class UsersREST {
                     produces = { MediaType.APPLICATION_JSON_VALUE,
                                  MediaType.APPLICATION_XML_VALUE })
     public void deleteUser(@PathVariable("userId") String userId) { usersService.deleteUser(Integer.parseInt(userId)); }
+
+    @RequestMapping(value = "/user/login/{login}",
+            method = RequestMethod.GET,
+            produces = { MediaType.APPLICATION_JSON_VALUE,
+                    MediaType.APPLICATION_XML_VALUE })
+    public Users getUserByLogin(@PathVariable("login") String login) {
+        return usersService.getUserByLogin(login);
+    }
 }
