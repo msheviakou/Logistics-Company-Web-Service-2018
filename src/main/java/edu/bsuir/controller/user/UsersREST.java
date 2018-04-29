@@ -28,6 +28,14 @@ public class UsersREST {
         return usersService.getAll();
     }
 
+    @RequestMapping(value = "/users/forwarders",
+            method = RequestMethod.GET,
+            produces = { MediaType.APPLICATION_JSON_VALUE,
+                    MediaType.APPLICATION_XML_VALUE })
+    public List<Users> getAllUsersForwarders() {
+        return usersService.getAllForwarders();
+    }
+
     @RequestMapping(value = "/user/{userId}",
                     method = RequestMethod.GET,
                     produces = { MediaType.APPLICATION_JSON_VALUE,

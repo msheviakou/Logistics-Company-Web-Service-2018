@@ -9,7 +9,7 @@ public interface UsersService {
     void deleteUser(int id);
     Users getUser(int id);
     List<Users> getAll();
-
+    List<Users> getAllForwarders();
     Users getUserByLoginAndPassword(String login, String password);
     Users getUserByLogin(String login);
     Users getUserByName(String name);

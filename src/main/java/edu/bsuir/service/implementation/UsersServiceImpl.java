@@ -35,6 +35,11 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
+    public List<Users> getAllForwarders() {
+        return usersRepository.getAllByPost("Экспедитор");
+    }
+
+    @Override
     public Users getUserByLoginAndPassword(String login, String password) { return usersRepository.getUserByLoginAndPassword(login, password); }
 
     @Override
