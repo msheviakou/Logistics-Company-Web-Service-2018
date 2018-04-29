@@ -12,5 +12,4 @@ public interface UsersService {
     List<Users> getAllForwarders();
     Users getUserByLoginAndPassword(String login, String password);
     Users getUserByLogin(String login);
-    Users getUserByName(String name);
 }
