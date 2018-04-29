@@ -44,9 +44,4 @@ public class UsersServiceImpl implements UsersService {
             return isUser.get();
         return new Users();
     }
-
-    @Override
-    public Users getUserByName(String name) {
-        return usersRepository.getUserByName(name);
-    }
 }
