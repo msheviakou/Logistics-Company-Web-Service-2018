@@ -21,10 +21,10 @@ public class OrdersServiceImpl implements OrdersService {
     @Override
     public Orders addOrder(Orders order) {
 
-        Users userForwarderBY = usersService.getUserByName(order.getUserForwarderBY().getName());
+        Users userForwarderBY = usersService.getUser(order.getUserForwarderBY().getId());
         order.setUserForwarderBY(userForwarderBY);
 
-        Users userForwarderPL = usersService.getUserByName(order.getUserForwarderPL().getName());
+        Users userForwarderPL = usersService.getUser(order.getUserForwarderPL().getId());
         order.setUserForwarderPL(userForwarderPL);
 
         return ordersRepository.saveAndFlush(order);

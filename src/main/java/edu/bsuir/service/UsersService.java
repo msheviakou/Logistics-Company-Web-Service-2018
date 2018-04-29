@@ -10,7 +10,7 @@ public interface UsersService {
     Users editUser(Users user);
     Users getUser(int id);
     List<Users> getAll();
-
+    List<Users> getAllForwarders();
     Users getUserByLoginAndPassword(String login, String password);
     Users getUserByName(String name);
 }
