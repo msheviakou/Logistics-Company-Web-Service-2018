@@ -21,7 +21,7 @@ public class NoticesServiceImpl implements NoticesService{
     @Override
     public Notices addNotices(Notices notice) {
 
-        Users userForwarder = usersService.getUserByName(notice.getForwarder().getName());
+        Users userForwarder = usersService.getUser(notice.getForwarder().getId());
         notice.setForwarder(userForwarder);
 
         return noticesRepository.saveAndFlush(notice);
