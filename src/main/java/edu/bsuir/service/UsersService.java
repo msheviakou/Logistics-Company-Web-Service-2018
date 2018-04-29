@@ -12,4 +12,5 @@ public interface UsersService {
 
     Users getUserByLoginAndPassword(String login, String password);
     Users getUserByLogin(String login);
+    Users getUserByName(String name);
 }

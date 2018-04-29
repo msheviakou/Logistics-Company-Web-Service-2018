@@ -21,7 +21,7 @@ public class OrdersServiceImpl implements OrdersService {
     @Override
     public Orders addOrder(Orders order) {
 
-        Users userForwarderBY = usersService.getUser(order.getUserForwarderBY().getId());
+        Users userForwarderBY = usersService.getUserByName(order.getUserForwarderBY().getName());
         order.setUserForwarderBY(userForwarderBY);
 
         Users userForwarderPL = usersService.getUser(order.getUserForwarderPL().getId());
