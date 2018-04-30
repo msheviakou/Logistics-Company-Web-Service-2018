@@ -4,8 +4,8 @@ import edu.bsuir.model.Users;
 import edu.bsuir.repository.UsersRepository;
 import edu.bsuir.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
-
 
 import java.util.List;
 import java.util.Optional;
@@ -20,7 +20,7 @@ public class UsersServiceImpl implements UsersService {
     public Users addUser(Users user) { return usersRepository.saveAndFlush(user); }
 
     @Override
-    public void deleteUser(int id) {
+    public void deleteUser(int id) throws DataIntegrityViolationException {
         usersRepository.deleteById(id);
     }
 
