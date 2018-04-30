@@ -54,4 +54,15 @@ public class OrdersServiceImpl implements OrdersService {
         order.setNumberOfOrder("000000");
         return order;
     }
+
+    @Override
+    public Orders editOrder(Orders order) {
+        Users userForwarderBY = usersService.getUser(order.getUserForwarderBY().getId());
+        order.setUserForwarderBY(userForwarderBY);
+
+        Users userForwarderPL = ordersRepository.getOne(order.getId()).getUserForwarderPL();
+        order.setUserForwarderPL(userForwarderPL);
+
+        return ordersRepository.saveAndFlush(order);
+    }
 }

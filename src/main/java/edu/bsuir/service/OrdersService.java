@@ -10,4 +10,5 @@ public interface OrdersService {
     Orders getOrder(int id);
     void deleteOrder(int id);
     Orders getLastOrder();
+    Orders editOrder(Orders order);
 }
